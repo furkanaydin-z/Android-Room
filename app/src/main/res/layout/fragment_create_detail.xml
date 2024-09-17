@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="createdToolbar"
+        type="String" />
+        <variable
+            name="createDetailFragment"
+            type="com.fako.notebook.CreateDetailFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellowWhite"
+        tools:context=".CreateDetailFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/createToolbar"
+            app:title="@{createdToolbar}"
+            app:titleTextColor="@color/search"
+            android:layout_width="0dp"
+            android:background="@color/redblack"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/createText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="64dp"
+            android:background="@color/redblack"
+            android:gravity="top"
+            android:padding="16dp"
+            android:textColor="@color/search"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createEditText" />
+
+        <EditText
+            android:id="@+id/createEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:padding="16dp"
+            android:background="@color/redblack"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/search"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createToolbar" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButtonCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="@{() -> createDetailFragment.kaydet(createEditText.getText().toString(),createText.getText().toString())}"
+            android:src="@drawable/save_resim"
+            app:fabCustomSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/createToolbar"
+            app:layout_constraintEnd_toEndOf="@+id/createToolbar"
+            app:layout_constraintTop_toTopOf="@+id/createToolbar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

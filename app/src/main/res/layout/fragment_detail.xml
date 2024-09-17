@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detaildToolbar"
+            type="String" />
+        <variable
+            name="detailFragment"
+            type="com.fako.notebook.DetailFragment" />
+        <variable
+            name="dataClass"
+            type="com.fako.notebook.data.entity.Notes" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellowWhite"
+        tools:context=".DetailFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detailToolbar"
+            app:title="@{detaildToolbar}"
+            android:layout_width="0dp"
+            app:titleTextColor="@color/search"
+            android:background="@color/redblack"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/detailText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="64dp"
+            android:background="@color/redblack"
+            android:gravity="top"
+            android:padding="16dp"
+            android:text="@{dataClass.description}"
+            android:textColor="@color/search"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailEditText" />
+
+        <EditText
+            android:id="@+id/detailEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:padding="16dp"
+            android:background="@color/redblack"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@{dataClass.title}"
+            android:textColor="@color/search"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailToolbar" />
+
+        <ImageView
+            android:id="@+id/detailUpdateImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{()-> detailFragment.guncelle(dataClass.id,detailEditText.getText().toString(),detailText.getText().toString())}"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/save_resim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
